@@ -1,0 +1,80 @@
+﻿
+    @{
+        ViewBag.Title = "ZEBOL S.A";
+    }
+
+    <h2>@ViewBag.Title</h2>
+
+
+
+    <header>
+
+
+
+        <META http-equiv=refresh content=10>
+
+        </header>
+
+
+            <div class="row">
+
+                <div class=" col-md-12">
+                    <table class="table">
+                        <tr>
+                            <th>Pedido</th>
+                            <th>Fecha</th>
+                            <th>Hora Creado</th>
+                            <th>FechaEntrega</th>
+                            <th>Estado</th>
+                            <th>CodCliente</th>
+                            <th>NombreCliente</th>
+                            <th>Vendedor</th>
+                            <th>FormaEntrega</th>
+                            <th>Almacen</th>
+                        </tr>
+
+
+                        @foreach (var oElemento in Model)
+
+                        {
+
+                            <tr>
+                                <td>@oElemento.Pedido</td>
+                                <td>@oElemento.Fecha</td>
+                                <td>@oElemento.HoraCreado</td>
+                                <td>@oElemento.FechaEntrega</td>
+
+                                @if (DateTime.Now >= @oElemento.FechaEntrega)
+                                {
+                                    <th style="background-color: #FF0000; "></th>
+                                }
+                                else if (DateTime.Now == @oElemento.FechaEntrega)
+                                {
+                                    <th style="background-color: #FFFF00; "></th>
+                                }
+                                else
+                                {
+                                    <th style="background-color: #00FF00;  "></th>
+
+                                }
+
+                                <td>@oElemento.CodCliente</td>
+                                <td>@oElemento.NombreCliente</td>
+                                <td>@oElemento.Vendedor</td>
+                                <td>@oElemento.FormaEntrega</td>
+                                <th>@oElemento.Almacen</th>
+
+
+
+                            </tr>
+
+                        }
+
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
